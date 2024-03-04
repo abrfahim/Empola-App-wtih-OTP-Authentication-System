@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Update Profile
+{% endblock title %}Update Profile
+
+{% block content %}
+  
+<h2><b>Update Employee Profile</b></h2>
+<div class="container mt-5 mb-5">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Name -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" value="{{profile.name}}" name="name" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" value="{{profile.email}}" name="email">
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" class="form-control" id="age" value="{{profile.age}}" name="age">
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select class="form-control" id="gender" name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Image -->
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <img src="{{profile.image.url}}" alt="" style="height: 80px; width:60px">
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea class="form-control" id="address" value="{{profile.address}}" name="address" rows="4" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+{% endblock content %}
